@@ -1,0 +1,100 @@
+# man 3 readline
+
+# Time-stamp: <2022-08-08 20:38:03 azabiralov>
+
+
+set bell-style none
+set blink-matching-paren on
+set colored-completion-prefix on
+set colored-stats on
+set completion-ignore-case on
+set completion-prefix-display-length 1
+set completion-query-items 1000
+set convert-meta off
+set echo-control-characters on
+set editing-mode emacs
+set input-meta on
+set mark-modified-lines on
+set mark-symlinked-directories on
+set menu-complete-display-prefix on
+set meta-flag on
+set output-meta on
+set enable-bracketed-paste on
+set expand-tilde on
+set page-completions off
+set show-all-if-ambiguous on
+set echo-control-characters on
+set history-preserve-point on
+set mark-directories on
+set mark-symlinked-directories on
+set show-all-if-unmodified on
+set visible-stats on
+
+# Common keybindings
+#
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+TAB: menu-complete
+
+# Keybindings and macroses for Bash
+#
+# use `bind -S' command for dump macroses
+# use `bind -P' command for dump current keybindings
+#
+# \e - Meta key and ^[ sequence
+#
+$if Bash
+
+    # address -> ssh address, M-q s
+    "\eqs": "\C-assh \C-e"
+
+    # name -> dig @1.1.1.1 name, M-q d
+    "\eqd": "\C-adig @1.1.1.1 \C-e"
+
+    # address -> nmap -Pn -F address, M-q n
+    "\eqn": "\C-anmap -Pn -F \C-e"
+
+    # address -> prettyping -c 5 address, M-q p
+    "\eqp": "\C-aprettyping -c 5 \C-e"
+
+    # command X -> while true ; do command ; sleep X ; done, M-q w
+    "\eqw": "\C-awhile true ; do \C-e\C-w ; sleep \C-y\ef ; done"
+
+    # if -> if [[ ]]; then  ; else  : ; fi, M-q f
+    "\eqf": "\C-aif [[ \C-e ]]; then  ; else  : ; fi"
+
+    # txt -> for i in *.txt ; do echo "${i}" ; done
+    "\eqf": "\ebfor i in *.\ef ; do echo \"${i}\" ; done"
+
+    # string -> "string", M-q q
+    "\eqq": "\eb\"\ef\""
+
+    "\e ": delete-horizontal-space   # M-SPC
+    "\C-xi": quoted-insert
+
+    "\eOR": start-kbd-macro          # F3
+    "\e[1;2R": end-kbd-macro         # S-F3
+    "\e[1;5R": call-last-kbd-macro   # C-F3
+
+$endif
+
+
+$if Guile
+
+    # string -> (string)
+    "\eql": "\eb(\ef)"
+
+    # string -> "string"
+    "\eqq": "\eb\"\ef\""
+
+
+$endif

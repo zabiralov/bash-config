@@ -1,0 +1,20 @@
+# Aliases for bash
+
+alias rc="source ${HOME}/config/bash/bashrc"
+alias ls="ls -F --color=auto"
+alias tree="eza -F --tree --git"
+
+alias si="sudo -i"
+alias sshp="ssh -o PubkeyAuthentication=no"
+alias rk="ssh-keygen -R"
+alias lk="ssh-add -l"
+alias llk="ssh-add -L"
+
+alias pstree="pstree -TUpluh"
+alias irb="irb --readline --simple-prompt"
+alias g="git --no-pager"
+alias cp="rsync -av"
+alias tad="tmux a -d || tmux new"
+alias lls="lxc list --format csv -c ns | column -s, -t"
+alias lll="lxc list --format csv -c ns46pNS | column -s, -t"
+alias tailf="tail -f"

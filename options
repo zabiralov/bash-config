@@ -1,0 +1,8 @@
+# shopt(1) for bash
+
+shopt -s autocd
+shopt -s cdspell
+shopt -s checkhash
+shopt -s cmdhist
+shopt -s dirspell
+shopt -s histappend
